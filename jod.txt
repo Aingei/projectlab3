@@ -1,0 +1,50 @@
+stop +1 //stop +2// stop -1// stop -2
+ip 192.168.1.10 // 255.255.255.0
+
+
+local P = {joint={0,-0.0674194,0,0,0,0}}
+MoveJIO(P, { {0, 10, 2, 1} }) // Mode distance index status // index do2 status on
+
+Speed()
+Sync()
+Accel()
+Circle(P15, P16, 1)
+Arc(P9, P10)
+CP(50)
+
+for i= 0,5
+do
+end
+
+if(DI(1) == ON) then
+end
+
+DO(1,OFF)
+DO(2,OFF)
+
+while(true)
+do
+end
+
+MovL(P1)
+MovL(RelPoint(P3,{a,b,0,fixedR})) //เลื่อนจากจุดอ้างอิง P3
+RelMovL({0,0,c,0}, Option)
+
+
+RP(P, offset) = ตำแหน่งใหม่ที่ได้จาก P + offset
+RJ(P1, {Offset1, Offset2, Offset3, Offset4, Offset5, Offset6})
+Go(RP(...)) = เคลื่อนแขนไปยังตำแหน่งที่ถูก offset
+
+local digroup = DIGroup(1,2)
+if (digroup[1]&digroup[2]==ON)
+then
+Move(P1)
+end
+
+Wait(1000)
+
+WaitDI(1,ON,50)
+Move(P1)
+//Get the status of DI1 every 50ms. If DI1 is high, the program continues to run, and the robot arm moves to
+P1 in a linear mode.
+
